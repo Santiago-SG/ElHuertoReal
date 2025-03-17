@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Carrito - El Huerto Real</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <header>
+        <img src="img/logo.png" alt="Logo El Huerto Real">
+        <h1>El Huerto Real</h1>
+    </header>
+    <nav>
+        <ul>
+            <li><a href="index.html">Inicio</a></li>
+            <li><a href="productos.html">Productos</a></li>
+            <li><a href="carrito.html">Carrito</a></li>
+            <li><a href="pago.html">Pago</a></li>
+        </ul>
+    </nav>
+
+    <main>
+        <div class="contenedor">
+            <h2>Carrito de Compras 🛒</h2>
+            <div id="lista-carrito"></div>
+            
+            <!-- Botón para limpiar el carrito -->
+            <div id="boton-limpiar-container" style="display: none; text-align: right;">
+                <button id="boton-limpiar" class="boton-pago" onclick="limpiarCarrito()">Limpiar Carrito</button>
+            </div>
+
+            <!-- Contenedor para el resumen de costos -->
+            <div class="resumen">
+                <h3>Resumen de Costos</h3>
+                <p>Subtotal: <span id="subtotal"></span></p>
+                <p>Envío: <span id="envio">10,000</span></p>
+                <p>Total: <span id="total"></span></p>
+                <a href="pago.html" class="boton-pago">Ir al pago</a>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <h3>El Huerto Real - Frutas y Verduras</h3>
+        <p>Calle Principal #123, Ciudad</p>
+        <p>Teléfono: 123-456-7890 | Email: info@elhuertoreal.com</p>
+        <p>&copy; 2025 Desarrollado por Santiago Supelano G.</p>
+    </footer>
+
+    <script src="js/utils.js"></script>
+    <script src="js/carrito.js"></script>
+</body>
+</html>

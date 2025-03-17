@@ -1,0 +1,27 @@
+{
+    "frutas": {
+      "frutos_rojos": [
+        { "nombre": "Fresas", "precio_kg": 5000, "precio_lb": 2500, "imagen": "img/frutas/fresa.png", "descripcion": "Frescas y jugosas, recién traídas del campo. Su sabor dulce y su textura crujiente las hacen perfectas para disfrutar solas o en deliciosos postres." },
+        { "nombre": "Cerezas", "precio_kg": 7500, "precio_lb": 3750, "imagen": "img/frutas/cereza.png", "descripcion": "Dulces y frescas, ideales para picar o añadir a tus recetas favoritas." },
+        { "nombre": "Uvas Rojas", "precio_kg": 6800, "precio_lb": 3400, "imagen": "img/frutas/uva.png", "descripcion": "Jugosas y llenas de sabor, perfectas para un snack saludable." }
+      ],
+      "frutas_tropicales": [
+        { "nombre": "Mango", "precio_kg": 4500, "precio_lb": 2250, "imagen": "img/frutas/mango.png", "descripcion": "Frescos y dulces, traídos directamente de los trópicos." },
+        { "nombre": "Piña", "precio_kg": 3200, "precio_lb": 1600, "imagen": "img/frutas/piña.png", "descripcion": "Jugosas y refrescantes, perfectas para batidos o ensaladas." },
+        { "nombre": "Maracuyá", "precio_kg": 5600, "precio_lb": 2800, "imagen": "img/frutas/maracuya.png", "descripcion": "Exóticas y aromáticas, ideales para dar un toque especial a tus bebidas." }
+      ]
+    },
+    "verduras": {
+      "verduras_frescas": [
+        { "nombre": "Zanahoria", "precio_kg": 3000, "precio_lb": 1500, "imagen": "img/verduras/zanahoria.png", "descripcion": "Frescas y crujientes, perfectas para ensaladas o como snack." },
+        { "nombre": "Brócoli", "precio_kg": 4800, "precio_lb": 2400, "imagen": "img/verduras/brocoli.png", "descripcion": "Fresco y nutritivo, ideal para acompañar tus platos." },
+        { "nombre": "Tomate", "precio_kg": 2600, "precio_lb": 1300, "imagen": "img/verduras/tomate.png", "descripcion": "Jugosos y sabrosos, perfectos para ensaladas o salsas." }
+      ],
+      "tuberculos_hortalizas": [
+        { "nombre": "Papa", "precio_kg": 2500, "precio_lb": 1250, "imagen": "img/verduras/papa.png", "descripcion": "Frescas y versátiles, ideales para cualquier receta." },
+        { "nombre": "Cebolla", "precio_kg": 3800, "precio_lb": 1900, "imagen": "img/verduras/cebolla.png", "descripcion": "Frescas y aromáticas, perfectas para dar sabor a tus platos." },
+        { "nombre": "Ajo", "precio_kg": 9500, "precio_lb": 4750, "imagen": "img/verduras/ajo.png", "descripcion": "Fresco y potente, un ingrediente esencial en la cocina." }
+      ]
+    }
+  }
+  

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pago - El Huerto Real</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <header>
+        <img src="img/logo.png" alt="Logo El Huerto Real">
+        <h1 style="display: inline;">El Huerto Real</h1>
+    </header>
+    <nav>
+        <ul>
+            <li><a href="index.html">Inicio</a></li>
+            <li><a href="productos.html">Productos</a></li>
+            <li><a href="carrito.html">Carrito</a></li>
+            <li><a href="pago.html">Pago</a></li>
+        </ul>
+    </nav>
+
+    <main>
+        <div class="pago-contenedor">
+            <h2>Confirmar Compra</h2>
+            <form id="formPago" onsubmit="return validarFormulario()">
+                <label>Nombre:</label>
+                <input type="text" id="nombre" required pattern="^(\w+\s+){1,}\w+$" title="Por favor, ingrese al menos un nombre y un apellido.">
+                
+                <label>Dirección:</label>
+                <input type="text" id="direccion" required>
+                
+                <label>Teléfono:</label>
+                <input type="tel" id="telefono" required pattern="\d{10}" title="Por favor, ingrese un número de teléfono válido (10 dígitos).">
+
+                <button type="submit">Finalizar Compra</button>
+            </form>
+        </div>
+    </main>
+
+    <footer>
+        <h3>El Huerto Real - Frutas y Verduras</h3>
+        <p>Calle Principal #123, Ciudad</p>
+        <p>Teléfono: 123-456-7890 | Email: info@elhuertoreal.com</p>
+        <p>&copy; 2025 Desarrollado por Santiago Supelano G.</p>
+    </footer>
+
+    <script src="js/pago.js"></script>
+    <script src="js/scroll.js"></script>
+
+</body>
+</html>

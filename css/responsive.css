@@ -1,0 +1,21 @@
+/* Estilos responsivos */
+@media (max-width: 768px) {
+    .contenedor {
+        padding: 10px; /* Reducir el padding en pantallas pequeñas */
+    }
+
+    .producto {
+        width: 90%; /* Hacer que los productos ocupen más espacio en pantallas pequeñas */
+        height: auto; /* Ajustar la altura automáticamente */
+    }
+
+    header img {
+        height: 80px; /* Ajustar la altura de la imagen del logo */
+        margin-right: 20px; /* Reducir el margen derecho */
+    }
+
+    nav ul li {
+        display: block; /* Cambiar a bloque para apilar los elementos en pantallas pequeñas */
+        margin: 10px 0; /* Margen vertical entre los elementos */
+    }
+}
