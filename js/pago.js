@@ -19,13 +19,13 @@ function validarFormulario() {
         return false; // Evitar el envío del formulario
     }
 
-    // Si las validaciones son correctas, limpiar el carrito
-    limpiarCarrito();
-
-    // Mostrar mensaje con los datos ingresados
+    // Mostrar mensaje de confirmación
     alert(`Hola ${nombre}, tu despacho será enviado en breve. Gracias por comprar en El Huerto Real.`);
 
-    return true; // Permitir el envío del formulario
+    // Redirigir a la página de inicio
+    window.location.href = 'index.html'; // Redirigir a la página de inicio
+
+    return false; // Evitar el envío del formulario
 }
 
 // Función para limpiar el carrito

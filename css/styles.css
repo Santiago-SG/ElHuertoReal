@@ -87,9 +87,11 @@ section {
 }
 
 section img {
-    max-width: 80%;
-    height: auto;
-    border-radius: 10px;
+    max-width: 100%; /* Asegura que la imagen no exceda el ancho del contenedor */
+    height: auto; /* Mantiene la proporción de la imagen */
+    display: block; /* Asegura que la imagen se comporte como un bloque */
+    margin: 0 auto; /* Centra la imagen horizontalmente */
+    border-radius: 10px; /* Bordes redondeados */
 }
 
 section p {
@@ -230,7 +232,7 @@ input[type="number"] {
 
 /* Estilos para la imagen "huerto" */
 .imagen-huerto {
-    max-width: 100%; /* Asegura que la imagen no exceda el ancho del contenedor */
+    max-width: 95%; /* Asegura que la imagen no exceda el ancho del contenedor */
     height: auto; /* Mantiene la proporción de la imagen */
     padding: 20px;
 }
@@ -331,11 +333,14 @@ h2 {
 
 .pago-contenedor input[type="text"],
 .pago-contenedor input[type="tel"] {
-    width: 100%; /* Ancho completo */
+    width: calc(100%); /* Ancho completo menos el margen */
     padding: 10px; /* Espaciado interno */
     border: 1px solid #ddd; /* Borde suave */
     border-radius: 5px; /* Bordes redondeados */
-    margin-bottom: 15px; /* Espaciado inferior */
+    margin-bottom: 10px; /* Espaciado inferior */
+    margin-left: 0; /* Espaciado izquierdo */
+    margin-right: 0; /* Espaciado derecho */
+    box-sizing: border-box; /* Asegura que el padding y el borde se incluyan en el ancho total */
 }
 
 .pago-contenedor button {
@@ -351,4 +356,59 @@ h2 {
 
 .pago-contenedor button:hover {
     background-color: #0057b8; /* Color al pasar el mouse */
+}
+
+/* Ajustes para dispositivos móviles */
+@media (max-width: 768px) {
+    header {
+        flex-direction: row; /* Mantener en línea en pantallas pequeñas */
+        align-items: center; /* Alinear verticalmente */
+        justify-content: center; /* Centrar horizontalmente */
+        height: auto; /* Permitir que el header se ajuste a su contenido */
+    }
+
+    header img {
+        height: 60px; /* Ajustar la altura del logo para pantallas pequeñas */
+        margin-right: 10px; /* Espacio entre el logo y el nombre */
+    }
+
+    header h1 {
+        font-size: 1.8em; /* Ajustar el tamaño de la fuente del nombre */
+    }
+
+    nav ul {
+        flex-direction: column; /* Cambia la dirección del menú a vertical */
+    }
+
+    nav ul li {
+        margin: 10px 0; /* Espaciado vertical entre los elementos del menú */
+    }
+
+    .contenedor {
+        padding: 10px; /* Reduce el padding en contenedores */
+    }
+
+    section {
+        margin: 10px 0; /* Reduce el margen en secciones */
+    }
+
+    .producto {
+        width: 90%; /* Ajusta el ancho de los productos para pantallas pequeñas */
+        height: auto; /* Permite que la altura se ajuste automáticamente */
+    }
+
+    .pasos-container {
+        flex-wrap: nowrap; /* Evitar que los pasos se envuelvan */
+        overflow-x: hidden; /* Ocultar el desplazamiento horizontal */
+    }
+
+    .paso {
+        width: 21%; /* Ajustar el ancho de cada paso para que quepan los tres en la pantalla */
+        margin: 0; /* Eliminar el margen entre los pasos */
+    }
+
+    section img {
+        width: 90%; /* Asegura que la imagen ocupe el 100% del contenedor en pantallas pequeñas */
+        height: auto; /* Mantiene la proporción de la imagen */
+    }
 }
