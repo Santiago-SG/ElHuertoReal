@@ -1,17 +1,24 @@
 document.addEventListener("DOMContentLoaded", function () {
-    fetch("data/productos.json")
-        .then(response => response.json())
-        .then(data => {
-            cargarProductos(data.frutas.frutos_rojos, "frutos-rojos");
-            cargarProductos(data.frutas.frutas_tropicales, "frutas-tropicales");
-            cargarProductos(data.verduras.verduras_frescas, "verduras-frescas");
-            cargarProductos(data.verduras.tuberculos_hortalizas, "tuberculos-hortalizas");
-        })
-        .catch(error => console.error("Error cargando productos:", error));
+    // Verificar si la página actual es productos.html antes de cargar productos
+    if (window.location.pathname.endsWith('/productos.html')) {
+        fetch("data/productos.json")
+            .then(response => response.json())
+            .then(data => {
+                cargarProductos(data.frutas.frutos_rojos, "frutos-rojos");
+                cargarProductos(data.frutas.frutas_tropicales, "frutas-tropicales");
+                cargarProductos(data.verduras.verduras_frescas, "verduras-frescas");
+                cargarProductos(data.verduras.tuberculos_hortalizas, "tuberculos-hortalizas");
+            })
+            .catch(error => console.error("Error cargando productos:", error));
+    }
 });
 
 function cargarProductos(listaProductos, contenedorId) {
     let contenedor = document.getElementById(contenedorId);
+    if (!contenedor) {
+        console.error(`Contenedor con ID "${contenedorId}" no encontrado.`);
+        return;
+    }
     contenedor.innerHTML = ""; // Limpiar el contenedor antes de cargar nuevos productos
     listaProductos.forEach(producto => {
         let productoHTML = `
@@ -21,14 +28,18 @@ function cargarProductos(listaProductos, contenedorId) {
                 <p class="descripcion">${producto.descripcion}</p>
                 <p><span class="precio">Precio:</span> <span class="precio">${formatearPrecio(producto.precio_kg)}/kg</span> | <span class="precio">${formatearPrecio(producto.precio_lb)}/lb</span></p>
 
+                <div>
                 <label for="unidad-${producto.nombre}">Comprar por:</label>
                 <select id="unidad-${producto.nombre}">
                     <option value="kg">Kilo</option>
                     <option value="lb">Libra</option>
                 </select>
+                </div>
 
+                <div>
                 <label for="cantidad-${producto.nombre}">Cantidad:</label>
                 <input type="number" id="cantidad-${producto.nombre}" value="1" min="1">
+                </div>
 
                 <button onclick="agregarAlCarrito('${producto.nombre}', ${producto.precio_kg}, ${producto.precio_lb}, this)">Añadir al carrito</button>
             </div>
@@ -61,9 +72,9 @@ function agregarAlCarrito(nombre, precio_kg, precio_lb, button) {
 
     // Mostrar el mensaje de confirmación
     const mensaje = document.getElementById("mensaje");
-    mensaje.innerText = `${nombre} ha sido añadido al carrito.`;
-    mensaje.style.display = "block"; // Mostrar el mensaje
+    mensaje.innerText = `${cantidad} ${unidad}(s) de ${nombre} ha sido añadido al carrito.`;
+    mensaje.classList.add("show"); // Mostrar el mensaje con la clase show
     setTimeout(() => {
-        mensaje.style.display = "none"; // Ocultar el mensaje después de 3 segundos
-    }, 3000); // 3000 ms para 3 segundos
+        mensaje.classList.remove("show"); // Ocultar el mensaje removiendo la clase show
+    }, 2000); // 2000 ms para 2 segundos
 }

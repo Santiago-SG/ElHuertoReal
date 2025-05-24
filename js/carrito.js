@@ -1,36 +1,27 @@
-let carrito = JSON.parse(localStorage.getItem("carrito")) || []; // Cargar carrito desde localStorage
-
-function agregarAlCarrito(nombre, precio_kg, precio_lb) {
-    let unidadSeleccionada = document.getElementById(`unidad-${nombre}`).value;
-    let cantidad = parseFloat(document.getElementById(`cantidad-${nombre}`).value);
-    let precio = unidadSeleccionada === "kg" ? precio_kg : precio_lb;
-
-    // Si la cantidad es válida
-    if (cantidad > 0) {
-        let productoExistente = carrito.find(item => item.nombre === nombre && item.unidad === unidadSeleccionada);
-
-        if (productoExistente) {
-            productoExistente.cantidad += cantidad;
-        } else {
-            carrito.push({ nombre, precio, unidad: unidadSeleccionada, cantidad });
-        }
-
-        localStorage.setItem("carrito", JSON.stringify(carrito));
-        alert(`${cantidad} ${unidadSeleccionada}(s) de ${nombre} añadido al carrito`);
-    } else {
-        alert("Por favor ingresa una cantidad válida.");
-    }
-}
-
 // Función para mostrar los productos en el carrito
 function mostrarCarrito() {
     const listaCarrito = document.getElementById("lista-carrito");
+    if (!listaCarrito) {
+        console.error(`Contenedor del carrito con ID "lista-carrito" no encontrado.`);
+        return;
+    }
     listaCarrito.innerHTML = ""; // Limpiar el contenido previo
+
+    const subtotalElement = document.getElementById("subtotal");
+    const envioElement = document.getElementById("envio");
+    const totalElement = document.getElementById("total");
+    const botonLimpiarContainer = document.getElementById("boton-limpiar-container");
+
+    if (!subtotalElement || !envioElement || !totalElement || !botonLimpiarContainer) {
+        console.error("Algunos elementos de resumen o botón de limpiar no se encontraron.");
+    }
 
     if (carrito.length === 0) {
         listaCarrito.innerHTML = "<p>No hay productos en el carrito.</p>";
-        document.getElementById("total").innerText = `$0.00`; // Establecer el total en cero
-        document.getElementById("boton-limpiar-container").style.display = "none"; // Ocultar el botón de limpiar
+        if (subtotalElement) subtotalElement.innerHTML = formatearPrecio(0);
+        if (envioElement) envioElement.innerHTML = formatearPrecio(10000); // Asegurar que el envío se muestre
+        if (totalElement) totalElement.innerText = `$0.00`; // Establecer el total en cero
+        if (botonLimpiarContainer) botonLimpiarContainer.style.display = "none"; // Ocultar el botón de limpiar
         return;
     }
 
@@ -52,12 +43,12 @@ function mostrarCarrito() {
     const costoEnvio = 10000; // Costo de envío
     const total = subtotal + costoEnvio; // Total a pagar
     
-    document.getElementById("subtotal").innerHTML = formatearPrecio(subtotal);
-    document.getElementById("envio").innerHTML = formatearPrecio(costoEnvio);
-    document.getElementById("total").innerHTML = `<span class="total">${formatearPrecio(total)}</span>`;
+    if (subtotalElement) subtotalElement.innerHTML = formatearPrecio(subtotal);
+    if (envioElement) envioElement.innerHTML = formatearPrecio(costoEnvio);
+    if (totalElement) totalElement.innerHTML = `<span class="total">${formatearPrecio(total)}</span>`;
 
     // Mostrar el botón de limpiar
-    document.getElementById("boton-limpiar-container").style.display = "block"; // Mostrar el botón de limpiar
+    if (botonLimpiarContainer) botonLimpiarContainer.style.display = "block"; // Mostrar el botón de limpiar
 }
 
 // Función para actualizar la cantidad de un producto en el carrito
@@ -79,8 +70,13 @@ function eliminarDelCarrito(index) {
 function limpiarCarrito() {
     carrito = []; // Vaciar el carrito
     localStorage.setItem("carrito", JSON.stringify(carrito)); // Actualizar el almacenamiento local
-    mostrarCarrito(); // Volver a mostrar el carrito
+    // La actualización visual del carrito ahora se maneja por separado en cada página si es necesario
 }
 
 // Llamar a mostrarCarrito al cargar la página
-document.addEventListener("DOMContentLoaded", mostrarCarrito);
+document.addEventListener("DOMContentLoaded", function() {
+    // Verificar si la página actual es carrito.html antes de llamar a mostrarCarrito
+    if (window.location.pathname.endsWith('/carrito.html')) {
+        mostrarCarrito();
+    }
+});
